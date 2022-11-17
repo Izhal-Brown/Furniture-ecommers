@@ -19,17 +19,30 @@ const Home = () => {
 
   const [trendingProducts, setTrendingProducts] = useState([])
   const [bestSalesProducts, setBestSalesProducts] = useState([])
+  const [mobileProducts, setMobileProducts] = useState([])
+  const [wirelessProducts, setWirelessProducts] = useState([])
+  const [popularProducts, setPopularProducts] = useState([])
 
   const year = new Date().getFullYear()
 
-  useEffect(()=>{
-    const filteredTrendingProducts = products.filter(item => item.category  === 'chair')
+  useEffect(() => {
+    const filteredTrendingProducts = products.filter(item => item.category === 'chair')
 
-    const filteredBestSalesProducts = products.filter(item => item.category  === 'sofa')
+    const filteredBestSalesProducts = products.filter(item => item.category === 'sofa')
 
-    setTrendingProducts(filteredTrendingProducts)
-    setBestSalesProducts(filteredBestSalesProducts)
-  },[]);
+    const filteredMobileProducts = products.filter(item => item.category === 'mobile')
+
+    const filteredWirelessProducts = products.filter(item => item.category === 'wireless')
+
+    const filteredPopularProducts = products.filter(item => item.category === 'watch')
+
+    setTrendingProducts(filteredTrendingProducts);
+    setBestSalesProducts(filteredBestSalesProducts);
+    setMobileProducts(filteredMobileProducts);
+    setWirelessProducts(filteredWirelessProducts);
+    setPopularProducts(filteredPopularProducts);
+
+  }, []);
 
   return <Helmet title={"Home"} >
     <section className="hero__section">
@@ -63,7 +76,7 @@ const Home = () => {
           <Col lg='12' className='text-center'>
             <h2 className="section__title">Trending Products</h2>
           </Col>
-          <ProductsList data={trendingProducts}/>
+          <ProductsList data={trendingProducts} />
         </Row>
       </Container>
     </section>
@@ -74,7 +87,7 @@ const Home = () => {
             <Col lg='12' className='text-center'>
               <h2 className="section__title">Best Sales</h2>
             </Col>
-            <ProductsList data={bestSalesProducts}/>
+            <ProductsList data={bestSalesProducts} />
           </Row>
         </Row>
       </Container>
@@ -88,13 +101,34 @@ const Home = () => {
               <h3 className='text-white fs-5 mb-3'>Quality Armchair</h3>
             </div>
             <Clock />
-            <button className="buy__btn store__btn">
+            <motion.button whileTap={{ scale: 1.2 }} className="buy__btn store__btn">
               <Link to="/shop">Visit Store</Link>
-            </button>
+            </motion.button>
           </Col>
           <Col lg='6' md='6' className='text-end'>
             <img src={counterImg} alt="" />
           </Col>
+        </Row>
+      </Container>
+    </section>
+    <section className="new__arivals">
+      <Container>
+        <Row>
+          <Col lg='12' className='text-center mb-5'>
+              <h2 className="section__title">New Arrivals</h2>
+          </Col>
+          <ProductsList data={mobileProducts} />
+          <ProductsList data={wirelessProducts} />
+        </Row>
+      </Container>
+    </section>
+    <section className="popular__category">
+      <Container>
+        <Row>
+          <Col lg='12' className='text-center mb-5'>
+              <h2 className="section__title">Popular in Category</h2>
+          </Col>
+          <ProductsList data={popularProducts} />
         </Row>
       </Container>
     </section>
