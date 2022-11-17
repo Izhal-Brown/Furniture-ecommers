@@ -3,6 +3,8 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import './header.css'
 
+import { motion } from 'framer-motion'
+
 import logo from '../../assets/images/eco-logo.png'
 import userIcon from '../../assets/images/user-icon.png'
 
@@ -47,9 +49,17 @@ const Header = () => {
             </ul>
           </div>
           <div className="nav__icons">
-            <span className="fav__icon"><i class="ri-heart-line"></i></span>
-            <span className="cart__icon"><i class="ri-shopping-bag-line"></i></span>
-            <span><img src={userIcon} alt="" /></span>
+            <span className="fav__icon">
+              <i class="ri-heart-line"></i>
+              <span className="badge">1</span>
+            </span>
+            <span className="cart__icon">
+              <i class="ri-shopping-bag-line"></i>
+              <span className="badge">1</span>
+            </span>
+            <span>
+              <motion.img whileTap={{ scale: 1.2 }} src={userIcon} alt="" />
+            </span>
           </div>
           <div className="mobile__menu">
             <span><i class="ri-menu-line"></i></span>

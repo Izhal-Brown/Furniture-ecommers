@@ -46,7 +46,7 @@ h2 {
   font-size: var(--heading-fontSize);
 }
 
-ul {
+ul {background: var(--card-bg-01);
   list-style: none;
 }
 
@@ -61,4 +61,10 @@ img{
 
 section{
   padding: 60px 0px;
+}
+
+.section__title{
+  color: var(--primary-color) ;
+  font-weight: 600;
+
 }
