@@ -46,7 +46,8 @@ h2 {
   font-size: var(--heading-fontSize);
 }
 
-ul {background: var(--card-bg-01);
+ul {
+  /* background: var(--card-bg-01); */
   list-style: none;
 }
 
@@ -66,5 +67,11 @@ section{
 .section__title{
   color: var(--primary-color) ;
   font-weight: 600;
+}
 
+@media only screen and (max-width:768px){
+  .service__item span i {
+    font-size: 1.5rem;
+    padding: 5px;
+  }
 }
